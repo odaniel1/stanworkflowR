@@ -4,10 +4,14 @@
 \alias{compile_model}
 \title{Compiles a stan model}
 \usage{
-compile_model(model_id, auto_write = TRUE, ...)
+compile_model(model_id, auto_write = TRUE, git_ignore = TRUE, ...)
 }
 \arguments{
 \item{model_id}{A name for a model}
+
+\item{auto_write}{Logical, defaulting to TRUE, indicating whether to save compiled model}
+
+\item{git_ignore}{Logical, defaulting to TRUE, indicating whether the compiled model should be added to the projects .gitignore}
 }
 \value{
 A compiled stan model
