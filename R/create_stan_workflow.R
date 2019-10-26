@@ -1,9 +1,50 @@
-create_rstan_workflow <- function(path){
+create_rstan_workflow <- function(model_id, ...){
 
-  if(fs::dir_exists(path)){
-    stop("File path already exists.")
+  create_model_directory(model_id, ...)
+
+  create_model_files(model_id, ...)
+
+  invisible(TRUE)
+}
+
+create_model_directory <- function(model_id, ...){
+
+  model_path <- create_model_path(model_id, ...)
+
+  if(fs::dir_exists(model_path)){
+    stop("Stan model directory already exists.")
   }
 
-  fs::dir_create(path)
+  fs::dir_create(model_path)
   invisible(TRUE)
+}
+
+create_model_files <- function(model_id, ...){
+
+  model_path <- create_model_path(model_id, ...)
+
+  model_files <- paste0(model_path, "/", model_id, c(".stan", "-parameters.R"))
+
+  purrr::map(model_files, fs::file_create)
+  invisible(TRUE)
+}
+
+create_model_path <- function(model_id, path = NULL){
+
+  if(!is.null(path)){
+    model_library_path <- path
+  } else {
+    model_library_path <- options()$model_library_path
+  }
+
+  if(is.null(model_library_path)){
+    stop("Path to model library must either be set locally using the path argument,
+         or set globally using the fix_model_library_path function")
+  }
+
+  paste0(model_library_path, "/", model_id)
+}
+
+fix_model_library_path <- function(path){
+  options(model_library_path = path)
 }

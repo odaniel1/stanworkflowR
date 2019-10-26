@@ -15,5 +15,7 @@ Suggests:
     spelling
 Language: en-US
 Imports: 
-    fs
+    fs,
+    purrr,
+    magrittr
 RoxygenNote: 6.1.1
