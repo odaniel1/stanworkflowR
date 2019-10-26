@@ -1,12 +1,12 @@
 Package: stanworkflowR
-Title: What the Package Does (One Line, Title Case)
+Title: Facilitates An rstan Workflow
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
            family = "Last",
            role = c("aut", "cre"),
            email = "first.last@example.com")
-Description: What the package does (one paragraph).
+Description: stanworkflowR is an R package to automate setting up, and working with, an rstan workflow.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -16,6 +16,5 @@ Suggests:
 Language: en-US
 Imports: 
     fs,
-    purrr,
     magrittr
 RoxygenNote: 6.1.1
